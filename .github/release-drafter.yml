@@ -1,0 +1,22 @@
+name-template: 'v$NEXT_MINOR_VERSION'
+tag-template: 'v$NEXT_MINOR_VERSION'
+categories:
+  - title: ':sparkles: Features'
+    label:
+      - 'feature :rocket:'
+      - 'enhancement :sparkles:'
+  - title: ':beetle: Bug Fixes'
+    label: 'bug :beetle:'
+  - title: ':toolbox: Maintenance'
+    label:
+      - 'maintenance :toolbox:'
+      - 'dependencies'
+exclude-labels:
+  - 'skip-changelog'
+change-template: '* $TITLE (#$NUMBER) @$AUTHOR'
+template: |
+  # What's Changed
+
+  $CHANGES
+
+  Full list of commits made since last release viewable at [compare view](https://github.com/weiji14/deepicedrain/compare/v0.4.1...v0.4.2).

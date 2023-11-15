@@ -1,0 +1,17 @@
+name: deepicedrain
+channels:
+  - conda-forge
+  - nvidia
+  - rapidsai
+dependencies:
+  - rapidsai::cuml=21.10.00[md5=b4b75e75b3c9489fabdcf6f7f411ba90]
+  - rapidsai::cuspatial=21.10.00[md5=439a561bacd5561a100b4f9cdc8cb29e]
+  - conda-forge::geos=3.9.1[md5=b9a6d9422aed3ad84ec6ccee9bfcaa0f]
+  - conda-forge::gmt=6.2.0[md5=bf0a13923777d4c140e31245f6ebc00b]
+  - conda-forge::graphviz=2.49.1[md5=9705e060a5e6395db9b0784220aa0b92]
+  - conda-forge::gxx_linux-64=11.2.0[md5=c738b2d8aad20e287e7567de72ffb1cb]
+  - conda-forge::parallel=20210822[md5=c1c5ca73d7086d3e7fe7e8f092454b0e]
+  - conda-forge::pip=21.2.4[md5=4104ada314dd5639ea36cc12bce0a2cd]
+  - conda-forge::poetry=1.1.11[md5=23a6f50870f5f9e5891a64a0a3b51625]
+  - conda-forge::proj=8.0.1[md5=5f820fa831777ee6463ee8dc4f2054ba]
+  - conda-forge::python=3.8.12[md5=775bb3a23a9b1b529e0cd06bd0091adf]

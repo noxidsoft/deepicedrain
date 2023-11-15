@@ -1,0 +1,66 @@
+name: Test DeepIceDrain
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - "**"
+
+jobs:
+  test:
+    name: ${{ matrix.os }} - Python ${{ matrix.python-version }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      max-parallel: 1
+      fail-fast: false
+      matrix:
+        python-version: [3.8]
+        os: [ubuntu-22.04]
+    defaults:
+      run:
+        shell: bash -l {0}
+
+    steps:
+      - name: Checkout current git repository
+        uses: actions/checkout@v2.2.0
+
+      - name: Setup Mambaforge
+        uses: conda-incubator/setup-miniconda@v2.1.1
+        with:
+          activate-environment: deepicedrain
+          channels: conda-forge
+          miniforge-version: latest
+          miniforge-variant: Mambaforge
+          mamba-version: "*"
+          use-mamba: true
+          environment-file: environment-linux-64.lock
+          show-channel-urls: true
+
+      - name: Install Poetry python dependencies
+        run: poetry install --no-root
+
+      - name: Install deepicedrain package
+        run: poetry install
+
+      # Pull test data from dvc remote (DAGsHub)
+      - name: Pull test data from dvc remote
+        run: |
+          dvc pull ATLXI/df_dhdt_slessor_downstream.parquet \
+                   ATLXI/df_dhdt_whillans_upstream.parquet \
+                   ATLXI/df_dhdt_whillans_downstream.parquet
+          ls -lhR ATLXI/
+
+      - name: Display virtualenv and installed package information
+        run: |
+          mamba info
+          mamba list
+          poetry env info
+          poetry show
+
+      - name: Code Quality
+        run: poetry run black . --check
+
+      - name: Test with pytest
+        run: poetry run pytest --verbose --doctest-modules deepicedrain/

@@ -1,0 +1,42 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Data files and folders
+**/*.h5
+ATL06.00?
+ATL11.00?
+ATL11.00?z123
+ATLXI/df_*.parquet
+ATLXI/ds_*.zarr
+Quantarctica3
+
+# Subglacial Lake grid files and figures
+figures/**/*.gif
+figures/**/*.nc
+figures/**/*.png
